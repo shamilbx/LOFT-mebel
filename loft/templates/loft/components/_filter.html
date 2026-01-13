@@ -1,0 +1,63 @@
+{% load loft_tags %}
+
+
+<div class="products_filter">
+    <div class="container">
+        <div class="row justify-content-around">
+            <div class="dropdown pt-2 pt-lx-0">
+                <button class="products_filter-dropdown dropdown-toggle rounded" type="button" id="dropdownColor"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    Подкатегории:
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownColor" style="">
+                    <li><a class="dropdown-item" href="?{% query_params cat=None page=1 %}">-----------------</a></li>
+                    {% for cat in subcats %}
+                    <li><a class="dropdown-item" href="?{% query_params cat=cat.slug page=1 %}">{{ cat.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% if request.GET.cat %}
+            <div class="dropdown pt-2 pt-lx-0">
+                <button class="products_filter-dropdown dropdown-toggle rounded" type="button" id="dropdownStrapType"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    Модели
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownStrapType" style="">
+                    <li><a class="dropdown-item" href="?{% query_params model=None page=1 %}">-----------------</a></li>
+                    {% for model in models %}
+                    <li><a class="dropdown-item" href="?{% query_params model=model.slug page=1 %}">{{ model.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <div class="dropdown pt-2 pt-lx-0">
+                <button class="products_filter-dropdown dropdown-toggle rounded" type="button" id="dropdownSort"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    Цена от: {% if request.GET.price_from %}{{ request.GET.price_from }}{% endif %}
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownSort" style="">
+                    <li><a class="dropdown-item" href="?{% query_params price_from=None page=1 %}">-----------------</a></li>
+                    {% for price in prices %}
+                    <li><a class="dropdown-item" href="?{% query_params price_from=price page=1 %}">{{ price }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="dropdown pt-2 pt-lx-0">
+                <button class="products_filter-dropdown dropdown-toggle rounded" type="button" id="dropdownWatchType"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    Цена до: {% if request.GET.price_to %}{{ request.GET.price_to }}{% endif %}
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownWatchType" style="">
+                    <li><a class="dropdown-item" href="?{% query_params price_to=None page=1 %}">-----------------</a></li>
+                    {% for price in prices %}
+                    <li><a class="dropdown-item" href="?{% query_params price_to=price page=1 %}">{{ price }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

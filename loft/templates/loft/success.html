@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load static %}
+
+{% block header %}
+
+{% endblock header %}
+
+
+{% block main %}
+
+<main class="main">
+    <div class="container" style="text-align: center">
+        <img src="{% static 'assets/images/success.png' %}" alt="" width="200" height="200" style="margin: 25px 0">
+        <h4>Ваша оплата прошла успешно</h4>
+        <p>Наш менеджер с вами свяжется, возможно в следующей жизни. Мы вас кинули</p>
+    </div>
+</main>
+
+
+{% endblock main %}
